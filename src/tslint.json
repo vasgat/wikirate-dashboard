@@ -1,17 +1,42 @@
 {
-    "extends": "../tslint.json",
-    "rules": {
-        "directive-selector": [
-            true,
-            "attribute",
-            "app",
-            "camelCase"
-        ],
-        "component-selector": [
-            true,
-            "element",
-            "app",
-            "kebab-case"
-        ]
-    }
+  "extends": "../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "app",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "app",
+      "kebab-case"
+    ],
+    "import-blacklist": [
+      true,
+      "node_modules/rxjs/Rx",
+      "rxjs/Observable",
+      "rxjs/Observer",
+      "rxjs/Subject",
+      "rxjs/observable/defer",
+      "rxjs/observable/merge",
+      "rxjs/observable/of",
+      "rxjs/observable/timer",
+      "rxjs/observable/combineLatest",
+      "rxjs/add/observable/combineLatest",
+      "rxjs/add/observable/of",
+      "rxjs/add/observable/merge",
+      "rxjs/add/operator/debounceTime",
+      "rxjs/add/operator/distinctUntilChanged",
+      "rxjs/add/operator/do",
+      "rxjs/add/operator/filter",
+      "rxjs/add/operator/map",
+      "rxjs/add/operator/retry",
+      "rxjs/add/operator/startWith",
+      "rxjs/add/operator/switchMap",
+      "rxjs/observable/interval",
+      "rxjs/observable/forkJoin"
+    ]
+  }
 }

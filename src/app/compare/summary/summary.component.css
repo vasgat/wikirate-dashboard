@@ -1,0 +1,16 @@
+/* The heart of the matter */
+.testimonial-group {
+  overflow-x: auto;
+  white-space: normal;
+}
+.testimonial-group .row > .col-md-4 {
+  display: inline-block;
+  float: none;
+  white-space: normal;
+}
+
+.testimonial-group .row > .col-md-2 {
+  display: inline-block;
+  float: none;
+  white-space: normal;
+}

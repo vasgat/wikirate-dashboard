@@ -1,0 +1,13 @@
+<div class="row mb-2">
+  <div class="col-md-12">
+    <nav class="navbar navbar-light bg-light border" xmlns="http://www.w3.org/1999/html">
+      <form class="col-md-12 py-2">
+        <h6>Select Year</h6>
+        <select id="inputYear" class="form-control" [disabled]="(sService.years.length === 0)? true : false" (change)="selectYear($event.target.value)">
+          <option selected>Select Year...</option>
+          <option *ngFor="let year of sService.years.reverse()" >{{year}}</option>
+        </select>
+      </form>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<app-companies-search-bar></app-companies-search-bar>
+<div *ngIf="isCompanySelected() && !loading">
+  <div class="row m-2">
+    <div class="col-3">
+      <small>Researched Metrics</small>
+      <div><span class="h4 p-2">{{company.numOfMetrics}}</span><i class="fas fa-arrow-up"
+                                                                  style="color: lightseagreen"></i><b
+        style="color: lightseagreen"> {{company.metrics_increase}}%</b></div>
+    </div>
+    <div class="col-3">
+      <small>Researched Metric Answers</small>
+      <br>
+      <div><span class="h4 p-2">{{company.numOfAnswers}}</span><i class="fas fa-arrow-up"
+                                                                  style="color: lightseagreen"></i><b
+        style="color: lightseagreen"> {{company.answers_increase}}%</b></div>
+      <div>
+        <small class="p-2" style="color: red">avg: 11 anwers/company</small>
+      </div>
+    </div>
+  </div>
+  <div class="row m-2 py-2">
+    <div class="col-5">
+      <div class="card mb-3">
+        <div class="card-header">
+          <img style="height: 20px" src="assets/images/radar-chart.png">
+          Performance Overview
+        </div>
+        <div class="card-body">
+          <canvas id="performance" style="height: 15%"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-pie"></i>
+          Women On Board Of Directors ({{year}})
+        </div>
+        <div class="card-body">
+          <canvas id="WomenOnBoard" style="height: 25%"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-area"></i>
+          Assets
+        </div>
+        <div class="card-body">
+          <canvas id="AssetsChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-area"></i>
+          Net Income Attributable to the company
+        </div>
+        <div class="card-body">
+          <canvas id="NetIncomeChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row text-center" *ngIf="loading">
+  <div class="box">
+    <div class="b b1"></div>
+    <div class="b b2"></div>
+    <div class="b b3"></div>
+    <div class="b b4"></div>
+  </div>
+</div>

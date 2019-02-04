@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import 'DataTables.net';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'DynaMat2';
+export class AppComponent implements OnInit {
+  title = 'WikiRate-Dashboard';
+  toggled = true;
+
+  ngOnInit(): void {
+  }
 }

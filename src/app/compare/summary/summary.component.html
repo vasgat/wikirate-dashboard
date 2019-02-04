@@ -1,0 +1,18 @@
+<!--<button class="btn btn-sm btn-outline-dark p1 m1" (click)='captureScreen()'>download PDF</button>-->
+<div id="summary" #summary>
+  <h2>{{title}}</h2>
+  <div class="testimonial-group">
+    <app-table-header></app-table-header>
+    <div class="row flex-nowrap header" *ngFor="let company of sService.selectedCompanies">
+      <app-company class="col-md-4" [company]="company"></app-company>
+      <div class="col-md-2 text-center" *ngFor="let metric of sService.selectedMetrics; let i = index">
+        <div *ngIf="company.answers[i].beautified_value === undefined">{{company.answers[i]['value']}}</div>
+        <div *ngIf="company.answers[i].beautified_value !== undefined">{{company.answers[i]['beautified_value']}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <app-companies-search class="col-md-12"></app-companies-search>
+</div>
+

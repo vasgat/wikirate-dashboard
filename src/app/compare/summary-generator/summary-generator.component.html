@@ -1,0 +1,48 @@
+<div *ngIf="isDataLoaded() && !loadingSummary">
+  <div class="m-1">
+    <p class="text-center h3">Generate your own Summaries!</p>
+    <p>Leverage WikiRate's open data to generate dynamically comparison matrices
+      based on your preferences. A comparison matrix is a table that summarizes various aspects of companies. Follow
+      the steps to generate your summary: </p>
+    <ul>
+      <li><b>Step 1.:</b> Search Metrics by name and choose those that interest you! (with keydown you can browse to all
+        metrics)
+      </li>
+      <li><b>Step 2.:</b> Select Year of Reference</li>
+    </ul>
+  </div>
+  <div class="row">
+    <app-metrics-search class="col-md-8"></app-metrics-search>
+    <app-year-select class="col-md-4"></app-year-select>
+  </div>
+  <div class="m-1">
+    <ul>
+      <li><b>Step 3.:</b> Search for Companies and choose those that interest you! (with keydown you can browse to all
+        companies)
+      </li>
+      <li><b>Step 4.:</b> Give a name to your summary!</li>
+    </ul>
+  </div>
+  <div class="row">
+    <app-companies-search class="col-md-6"></app-companies-search>
+    <app-input-summary-title class="col-md-6"></app-input-summary-title>
+  </div>
+  <div class="m-1">
+    <ul>
+      <li><b>Step 5.:</b> Generate your Summary!</li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <button class="btn btn-outline-primary" (click)="onGenerate()">Generate Summary</button>
+    </div>
+  </div>
+</div>
+<div class="row text-center" *ngIf="!isDataLoaded() || loadingSummary">
+  <div class="box">
+    <div class="b b1"></div>
+    <div class="b b2"></div>
+    <div class="b b3"></div>
+    <div class="b b4"></div>
+  </div>
+</div>

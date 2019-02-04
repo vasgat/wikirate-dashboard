@@ -1,0 +1,20 @@
+<div class="row flex-nowrap" *ngIf="selectedMetrics.length > 0">
+  <div class="col-md-4 h6 text-center"><span class="py-1 m-1">Company</span></div>
+  <div class="col-md-2 text-center" *ngFor="let metric of selectedMetrics; let i = index">
+    <div class="py-1 m-1">{{metric.name}}
+      <a class="m-1" style="cursor: pointer" (click)="sortTable(metric, i)">
+        <fa name="fas fa-sort"></fa>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="row flex-nowrap" *ngIf="selectedMetrics.length > 0">
+  <div class="col-md-4 h6 text-center"></div>
+  <div class="col-md-2 text-center" *ngFor="let metric of selectedMetrics; let i = index">
+    <div *ngIf="metric.unit!==null">
+      <small class="text-muted">({{metric.unit}})</small>
+    </div>
+  </div>
+  <hr>
+</div>
+

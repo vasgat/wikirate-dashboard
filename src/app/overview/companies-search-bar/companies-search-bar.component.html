@@ -1,0 +1,16 @@
+<div class="input-group border rounded m-2" appDropdown >
+  <div class="p-3">
+    <i class="fas fa-search "></i>
+  </div>
+  <input [style.cursor-progress]="(companies.length === 0) ? true : false" [disabled]="(companies.length === 0) ? true : false" type="text" class="form-control form-control-borderless m-2" placeholder="Search for company..."
+         aria-label="Search for company..." aria-describedby="basic-addon2"
+         #companies_search_field (input)="searchCompany(companies_search_field)"
+         (keydown)="searchCompany(companies_search_field)">
+  <div class="dropdown-menu col-md-12 pre-scrollable">
+    <a style="cursor: pointer" class="dropdown-item" *ngFor="let company of filteredCompanies | async"
+       id="{{company.id}}" (click)="onCompanySelect(companies_search_field, company)">
+      <strong>{{company.name}}</strong> :
+      <small>{{company.headquarters}}</small>
+    </a>
+  </div>
+</div>

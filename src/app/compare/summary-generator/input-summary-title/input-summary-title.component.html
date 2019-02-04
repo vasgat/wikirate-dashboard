@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-12">
+    <nav class="navbar navbar-light bg-light border" xmlns="http://www.w3.org/1999/html">
+      <form class="col-md-12 py-2">
+        <h6>Give a title: </h6>
+        <div class="input-group" appDropdown>
+          <input #title class="form-control mr-sm-2" type="text"
+                 placeholder="Give a title to your summary..." (input)="emitTitle()">
+        </div>
+      </form>
+    </nav>
+  </div>
+</div>

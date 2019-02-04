@@ -1,0 +1,79 @@
+<div *ngIf="!loading">
+  <div class="row m-2">
+    <div class="col-4">
+      <small>Companies</small>
+      <br>
+      <div><span class="h4 p-2">{{numberWithCommas(stats.companies)}}</span><i class="fas fa-arrow-up"
+                                                                               style="color: lightseagreen"></i><b
+        style="color: lightseagreen"> {{stats.increase_on_companies}}%</b></div>
+    </div>
+    <div class="col-4">
+      <small>Researched Metrics</small>
+      <div><span class="h4 p-2">{{numberWithCommas(stats.metrics)}}</span><i class="fas fa-arrow-up"
+                                                                             style="color: lightseagreen"></i><b
+        style="color: lightseagreen"> {{stats.increase_on_metrics}}%</b></div>
+    </div>
+    <div class="col-4">
+      <small>Researched Metric Answers</small>
+      <br>
+      <div><span class="h4 p-2">{{numberWithCommas(stats.answers)}}</span><i class="fas fa-arrow-up"
+                                                                             style="color: lightseagreen"></i><b
+        style="color: lightseagreen"> {{stats.increase_on_answers}}%</b></div>
+    </div>
+  </div>
+  <div class="row m-2 py-4">
+    <div class="col-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-pie"></i>
+          Most Researched Topics
+        </div>
+        <div class="card-body">
+          <canvas id="ResearchedTopics" ></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-pie"></i>
+          Researched Metric Types
+        </div>
+        <div class="card-body">
+          <canvas id="MetricTypes"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-area"></i>
+          Users over the years
+        </div>
+        <div class="card-body">
+          <canvas id="OverallUsers"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-area"></i>
+           Metric Answers over the years
+        </div>
+        <div class="card-body">
+          <canvas id="OverallAnswers"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row text-center" *ngIf="loading">
+  <div class="box">
+    <div class="b b1"></div>
+    <div class="b b2"></div>
+    <div class="b b3"></div>
+    <div class="b b4"></div>
+  </div>
+</div>
+

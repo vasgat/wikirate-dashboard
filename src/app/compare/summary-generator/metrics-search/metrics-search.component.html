@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-12">
+    <nav class="navbar navbar-light bg-light border" xmlns="http://www.w3.org/1999/html">
+      <form class="col-md-12 py-2">
+        <h6>Search Metrics</h6>
+        <div class="input-group" appDropdown>
+          <input #metrics_search_field class="form-control mr-sm-2" type="search"
+                 placeholder="Start typing something to search..."
+                 aria-label="Add" (input)="search(metrics_search_field)" (keydown)="onKeydown(metrics_search_field)"
+                 appDropdown>
+
+          <div class="dropdown-menu pre-scrollable">
+            <a class="dropdown-item" *ngFor="let metric of filteredMetrics | async" id="{{metric.id}}"
+               (click)="onSelectedMetric(metrics_search_field, metric)" style="cursor: pointer">
+              <small>{{metric.designer}}</small>
+              : <strong>{{metric.name}}</strong>
+            </a>
+          </div>
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="reset"
+                  (click)="onAddMetric(metrics_search_field)">
+            Add
+          </button>
+        </div>
+      </form>
+    </nav>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-outline-dark m-2" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"> Metrics Basket
+      <i class="fas fa-shopping-basket m-1"></i>
+      <span class="badge badge-light">{{ getSelectedMetrics().length }}</span>
+    </button>
+    <button type="button" class="btn btn-outline-dark m-2" (click)="clear()">
+      Clear Basket
+      <i class="far fa-trash-alt m-1"></i>
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 my-2">
+    <div id="collapseExample" [ngbCollapse]="isCollapsed" *ngIf="getSelectedMetrics().length > 0">
+      <ul class="list-group col-md-12">
+        <li class="list-group-item d-flex" *ngFor="let metric of getSelectedMetrics()"><a
+          class="col-sm-10 link-to-modal text-primary" (click)="openInfo(metric)"> {{ metric.name }}</a>
+          <button class="btn btn-sm btn-outline-danger col-sm-2" (click)="removeMetric(metric)"
+                  >
+            Remove
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

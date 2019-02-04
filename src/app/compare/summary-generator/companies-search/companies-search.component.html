@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-12">
+    <nav class="navbar navbar-light bg-light border">
+      <form class="col-md-12 py-2">
+        <h6>Search Companies</h6>
+        <div class="input-group" appDropdown>
+          <input class="form-control mr-sm-2" type="search" placeholder="Start typing something to search..."
+                 aria-label="Add" #companies_search_field (input)="searchCompany(companies_search_field)" (keydown)="onKeydown(companies_search_field)"
+                 [disabled]="(this.sService.selectedMetrics.length === 0)? true : false"
+                 appDropdown>
+
+          <div class="dropdown-menu col-md-12 pre-scrollable">
+            <a class="dropdown-item" *ngFor="let company of filteredCompanies | async" id="{{company.id}}"
+               (click)="onSelectedCompany(companies_search_field, company)" style="cursor: pointer;">
+              <strong>{{company.name}}</strong> :
+              <small>{{company.headquarters}}</small>
+            </a>
+          </div>
+          <button class="btn btn-outline-primary my-2 my-sm-0"
+                  [disabled]="this.sService.selectedMetrics.length === 0 ? true : false" type="reset"
+                  (click)="onAddCompany(companies_search_field)">Add
+          </button>
+        </div>
+      </form>
+    </nav>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-outline-dark m-2" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"> Companies Basket
+      <i class="fas fa-shopping-basket m-1"></i>
+      <span class="badge badge-light">{{ this.sService.selectedCompanies.length }}</span>
+    </button>
+    <button type="button" class="btn btn-outline-dark m-2" (click)="this.sService.removeAllSelectedCompanies()">
+      Clear Basket
+      <i class="far fa-trash-alt m-1"></i>
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 my-2">
+    <div id="collapseExample" [ngbCollapse]="isCollapsed" *ngIf="this.sService.selectedCompanies.length > 0">
+      <ul class="list-group col-md-12">
+        <li class="list-group-item d-flex" *ngFor="let company of this.sService.selectedCompanies"><a
+          class="col-sm-10 link-to-modal text-primary" (click)="openInfo(company)"> {{ company.name }}</a>
+          <button class="btn btn-sm btn-outline-danger col-sm-2"
+                  (click)="this.sService.removeSelectedCompany(company)">
+            Remove
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
