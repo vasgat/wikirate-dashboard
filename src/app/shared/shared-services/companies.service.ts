@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from '@angular/common/http';
 import {Company} from '../shared-models/company.model';
+import {ChartData} from '../shared-models/chart-data.model';
 
 @Injectable()
 export class CompaniesService {
@@ -10,9 +11,9 @@ export class CompaniesService {
   }
 
   getCompanies() {
-    return this.http.get<{results: Company[]}>('http://easie.iti.gr/DynaMatAPI/extractor_service/api/companies')
+    return this.http.get<{ results: Company[] }>('http://easie.iti.gr/DynaMatAPI/extractor_service/api/companies')
       .map(
-        (results: {results: Company[]}) => {
+        (results: { results: Company[] }) => {
           return results.results;
         }
       ).catch((error: Response) => {
@@ -20,6 +21,15 @@ export class CompaniesService {
           return Observable.throw(error);
         }
       );
+  }
+
+  getCompany(id: number) {
+    return this.http.get<{ company: Company }>('http://easie.iti.gr/DynaMatAPI/extractor_service/api/company?id=' + id)
+      .map(
+        (results: { company: Company }) => {
+          return results.company;
+        }
+      ).toPromise();
   }
 
 

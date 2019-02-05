@@ -49,7 +49,9 @@ export class SummaryService {
       this.aService.getMetricCompanies(metric.id).subscribe(
         (companies: Company[]) => {
           for (const company of companies) {
-            this.companies.push(company);
+            if (this.companies.findIndex(c => c.id === company.id) < 0) {
+              this.companies.push(company);
+            }
           }
         },
         (error) => console.log(error));

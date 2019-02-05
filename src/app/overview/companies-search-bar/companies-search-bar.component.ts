@@ -38,7 +38,7 @@ export class CompaniesSearchBarComponent implements OnInit {
     if (this.companies.length === 0) {
       return;
     }
-    if (this.companies.length < 2500 || content.value.length >= 1) {
+    if (this.companies.length < 1000 || content.value.length >= 1) {
       this.filteredCompanies = this.companyCtrl.valueChanges
         .pipe(
           startWith(content.value),
@@ -48,7 +48,7 @@ export class CompaniesSearchBarComponent implements OnInit {
       this.filteredCompanies = this.companyCtrl.valueChanges
         .pipe(
           startWith(''),
-          map(company => company ? this._filterCompany(company) : Array.from(this.companies).slice(0, 2000))
+          map(company => company ? this._filterCompany(company) : Array.from(this.companies).slice(0, 1000))
         );
     }
   }

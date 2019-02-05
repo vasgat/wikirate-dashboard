@@ -5,6 +5,7 @@ import {ChartData} from '../shared/shared-models/chart-data.model';
 import {ChartService} from '../shared/shared-services/chart.service';
 import {OverviewService} from './services/overview.service';
 import {Company} from '../shared/shared-models/company.model';
+import {CompaniesService} from '../shared/shared-services/companies.service';
 
 @Component({
   selector: 'app-overview',
@@ -18,7 +19,7 @@ export class OverviewComponent {
   loading = false;
   year = '2018';
 
-  constructor(private aService: AnswersService, private chartService: ChartService, private oService: OverviewService) {
+  constructor(private aService: AnswersService, private chartService: ChartService, public oService: OverviewService, private cService: CompaniesService) {
     this.oService.companyChange.subscribe((value => {
       this.company = value;
       this.generateCharts();
@@ -32,6 +33,8 @@ export class OverviewComponent {
 
   async generateCharts() {
     this.loading = true;
+
+    this.company = await this.cService.getCompany(this.company.id);
 
     const womenOnBoard = await this.aService.getAnswer(538693, this.company.name);
 
@@ -52,6 +55,7 @@ export class OverviewComponent {
         });
       }
     }
+
     const performanceChart = this.chartService.radarChart('performance',
       this.company.performance.labels,
       this.company.performance.data,
